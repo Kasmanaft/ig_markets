@@ -79,10 +79,10 @@ module IGMarkets
         attribute :good_till_date, Time, format: '%Y/%m/%d %R:%S'
         attribute :guaranteed_stop, Boolean
         attribute :level, Float
-        attribute :limit_distance, Integer
+        attribute :limit_distance, Float
         attribute :limit_level, Float
         attribute :size, Float
-        attribute :stop_distance, Integer
+        attribute :stop_distance, Float
         attribute :stop_level, Float
         attribute :time_in_force, Symbol, allowed_values: %i[good_till_cancelled good_till_date]
         attribute :type, Symbol, allowed_values: %i[limit stop]
