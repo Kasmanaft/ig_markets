@@ -10,12 +10,12 @@ module IGMarkets
     attribute :epic, String, regex: Regex::EPIC
     attribute :good_till_date, Time, format: '%Y/%m/%d %R'
     attribute :guaranteed_stop, Boolean
-    attribute :limit_distance, Integer
+    attribute :limit_distance, Float
     attribute :limited_risk_premium, LimitedRiskPremium
     attribute :order_level, Float
     attribute :order_size, Float
     attribute :order_type, Symbol, allowed_values: %i[limit stop]
-    attribute :stop_distance, Integer
+    attribute :stop_distance, Float
     attribute :time_in_force, Symbol, allowed_values: %i[good_till_cancelled good_till_date]
 
     attribute :market, MarketOverview
@@ -66,9 +66,9 @@ module IGMarkets
     class WorkingOrderUpdateAttributes < Model
       attribute :good_till_date, Time, format: '%Y/%m/%d %R:%S'
       attribute :level, Float
-      attribute :limit_distance, Integer
+      attribute :limit_distance, Float
       attribute :limit_level, Float
-      attribute :stop_distance, Integer
+      attribute :stop_distance, Float
       attribute :stop_level, Float
       attribute :time_in_force, Symbol, allowed_values: %i[good_till_cancelled good_till_date]
       attribute :type, Symbol, allowed_values: %i[limit stop]
