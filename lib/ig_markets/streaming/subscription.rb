@@ -87,6 +87,13 @@ module IGMarkets
 
         { confirms: DealConfirmation, opu: PositionUpdate, wou: WorkingOrderUpdate }.each do |key, model_class|
           next unless new_data[key]
+          
+          # Fix; order record will have orderType attribute
+          # Order updates now can be found in opu Channel 🤷🏼
+          if key == :opu
+            data = JSON.parse(new_data[key])
+            model_class = WorkingOrderUpdate if data['orderType']
+          end
 
           data = @dealing_platform.instantiate_models_from_json model_class, new_data[key]
           data.account_id = account_id
